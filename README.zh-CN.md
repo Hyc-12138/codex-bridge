@@ -32,8 +32,6 @@ flowchart LR
 - 已登录的 [Codex CLI](https://github.com/openai/codex)
 - Claude Code
 
-`run.sh` 调用 PowerShell 和 `cygpath`，目前不能直接在 macOS、Linux 上运行。
-
 ## 安装
 
 ```bash
@@ -70,6 +68,12 @@ bash scripts/status.sh <codex_run.log>
 | `scripts/run.sh` | 预检沙箱权限，跑一次 `codex exec`，打印退出码、会话 id、用量和报告位置 |
 | `scripts/status.sh` | 查看一次运行的进度 |
 | `scripts/preflight.ps1` | 检查 Codex 沙箱能否给工作目录加权限 |
+
+## 限制
+
+- 目前只支持 Windows：`run.sh` 调用 PowerShell 和 `cygpath`。
+- `workspace-write` 只限制写入，Codex 仍能读工作目录以外的文件。
+- 退出码为 0 只说明 Codex 跑完了，做得对不对要看产物验收。
 
 ## 许可
 

@@ -32,8 +32,6 @@ flowchart LR
 - [Codex CLI](https://github.com/openai/codex), logged in
 - Claude Code
 
-`run.sh` calls PowerShell and `cygpath`, so it does not run on macOS or Linux as is.
-
 ## Install
 
 ```bash
@@ -70,6 +68,12 @@ Output from a real run (paths and the session id replaced; script messages are i
 | `scripts/run.sh` | Runs the preflight check and one `codex exec`, then prints exit code, session id, usage and report path |
 | `scripts/status.sh` | Shows the progress of a run |
 | `scripts/preflight.ps1` | Checks that the Codex sandbox can set permissions on the working folder |
+
+## Limits
+
+- Windows only for now: `run.sh` calls PowerShell and `cygpath`.
+- `workspace-write` limits writing only. Codex can still read files outside the working folder.
+- A green exit code only means Codex finished. Whether the work is right is decided by the output check.
 
 ## License
 
